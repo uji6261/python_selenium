@@ -7,7 +7,7 @@ import time
 
 
 options = Options()
-# options.add_argument('--headless')
+options.add_argument('--headless')
 options.add_argument('--disable-gpu')
 options.add_argument('--disable-setuid-sandbox')
 options.add_argument('--no-sandbox')
@@ -41,12 +41,8 @@ for elem in elems:
 # 画像をダウンロードする
 # seliniumでは、画像の保存をスクリーンショットとして保存できる
 
-
-# img_elem = driver.find_element_by_tag_name('img')
-# img_elem = driver.find_element_by_xpath("//img[@alt='へびせんせいのサンプル画像']")
+# img_elem = driver.find_element_by_xpath("//img[@alt='へびせんせいのサンプル画像']") 完全一致はこちら
 img_elem = driver.find_element_by_xpath("//img[contains(@alt,'サンプル画像')]")
-# img_elem = driver.find_elements_by_tag_name("img")
-# img = img_elem[2].screenshot_as_png
 
 with open("out.png", "wb") as f:
     f.write(img_elem.screenshot_as_png)
